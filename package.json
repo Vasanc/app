@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Vasanc/node_hotel_review_app/issues"
   },
-  "homepage": "https://github.com/Vasanc/node_hotel_review_app#readme"
+  "homepage": "https://github.com/Vasanc/node_hotel_review_app#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }
