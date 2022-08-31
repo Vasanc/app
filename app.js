@@ -1,25 +1,18 @@
 const express = require('express')
 const app = express()
+const mongoose=require("mongoose")  
 app.set("view engine", "ejs")
 app.use(express.static('views'))
 app.use(express.static('assets'))
 
-const mongoose = require('mongoose')
+const url = "mongodb+srv://vasan:vasan123@app.xjyvh0o.mongodb.net/?retryWrites=true&w=majority"; 
 
-const url = `mongodb+srv://sample_user:<password>@my-sample-cluster-b3ugy.mongodb.net/<dbname>?retryWrites=true&w=majority`;
+mongoose.connect( url,{useNewUrlParser: true,useUnifiedTopology: true})
+    .then((res)=>{
+        console.log('db connect')
+    })
+    .catch((err)=>{console.log(err)})
 
-const connectionParams={
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true 
-}
-mongoose.connect(url,connectionParams)
-    .then( () => {
-        console.log('Connected to database ')
-    })
-    .catch( (err) => {
-        console.error(`Error connecting to the database. \n${err}`);
-    })
 
 
 app.listen(6060,()=>
@@ -29,3 +22,6 @@ app.listen(6060,()=>
 
 const homepage = require('./controller/homepage')
 app.use(homepage)
+
+const signup = require('./controller/signup')
+app.use(signup)

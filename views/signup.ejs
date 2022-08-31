@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" href="./assets/signup.css" />
   </head>
   <body>
-    <form method="post  " style="border: 1px solid #ccc">
+    <form action = '/signup' method="post  " style="border: 1px solid #ccc">
       <div class="container">
         <h1>Sign Up</h1>
         <p>Please fill in this form to create an account.</p>
@@ -25,12 +25,11 @@
         />
 
         <p>Please select your favorite Web language:</p>
-        <input type="radio" id="html" name="fav_language" value="hotel" />
+        <input type="radio" id="html" name="type" value="hotel" />
         <label for="html">Hotel</label><br />
-        <input type="radio" id="css" name="fav_language" value="user" />
+        <input type="radio" id="css" name="type" value="user" />
         <label for="css">Customer</label><br />
         <br />
-        <a href="/signup">
           <div class="clearfix">
             <button type="submit" class="signupbtn">Sign Up</button>
           </div>
