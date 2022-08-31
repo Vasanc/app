@@ -1,8 +1,8 @@
 const route = require('express').Router()
 
 route.get('/',(req, res)=>{
-    console.log('signup page')
-    res.render('signup')
+    console.log('in home page');
+    res.send('this is home page')
 })
 
 module.exports = route

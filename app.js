@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const mongoose=require("mongoose")  
 app.set("view engine", "ejs")
+app.use(express.urlencoded({extended:false}))
 app.use(express.static('views'))
 app.use(express.static('assets'))
 
@@ -12,7 +13,6 @@ mongoose.connect( url,{useNewUrlParser: true,useUnifiedTopology: true})
         console.log('db connect')
     })
     .catch((err)=>{console.log(err)})
-
 
 
 app.listen(6060,()=>
