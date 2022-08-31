@@ -10,11 +10,12 @@ route.get('/signup', (req, res) => {
 route.post('/signup', (req, res) => {
   users
     .findOne({ username: req.body.username })
-    .then((result) => {
+    .then(async (result) => {
       if (result) {
         console.log('Username already exists')
         res.send('failure')
       } else {
+        const hash = await bcrypt.hash(req.body.psw, 10)
         const new_user = new users({
           username: req.body.username,
           password: hash,
