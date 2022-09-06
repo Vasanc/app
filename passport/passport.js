@@ -7,14 +7,14 @@ const cryptr = new Cryptr('placement_project')
 
 module.exports = () => {
   console.log('ur  in  passport.js ')
-  passport.serializeUser((employ, done) => {
-    console.log('inside serialize', employ)
-    done(null, employ.id)
+  passport.serializeUser((user, done) => {
+    console.log('inside serialize', user)
+    done(null, user.id)
   })
   passport.deserializeUser((id, done) => {
     console.log('inside deserialize', id)
-    signup.findById(id, (err, employ) => {
-      done(err, employ)
+    signup.findById(id, (err, user) => {
+      done(err, user)
     })
   })
 
@@ -22,26 +22,26 @@ module.exports = () => {
   passport.use(
     'local-login',
     new localstrategy((username, password, done) => {
-      signup.findOne({ username: username }, (err, employ) => {
+      signup.findOne({ username: username }, (err, user) => {
         if (err) {
           return done(err)
         }
-        if (!employ) {
+        if (!user) {
           console.log('this is in  passport file')
           return done(null, false, { message: 'Incorrect Username ' })
         }
 
-        if (employ.password == password) {
-          return done(null, employ)
+        if (user.password == password) {
+          return done(null, user)
         } else {
-          bcrypt.compare(password, employ.password, (err, res) => {
+          bcrypt.compare(password, user.password, (err, res) => {
             if (err) {
               return done(err)
             }
             if (res == false) {
               return done(null, false, { message: 'Incorrect Password' })
             }
-            return done(null, employ)
+            return done(null, user)
           })
         }
       })

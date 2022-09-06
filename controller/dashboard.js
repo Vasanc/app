@@ -1,7 +1,7 @@
 const route = require('express').Router()
 
 route.get('/dashboard', (req, res) => {
-  res.send('this is dashboard')
+  res.render('dashboard')
 })
 
 module.exports = route
