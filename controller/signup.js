@@ -16,6 +16,7 @@ route.post('/signup', (req, res) => {
         res.send('failure')
       } else {
         const hash = await bcrypt.hash(req.body.psw, 10)
+
         const new_user = new users({
           username: req.body.username,
           password: hash,
@@ -23,7 +24,8 @@ route.post('/signup', (req, res) => {
           type: req.body.t,
         })
         new_user.save()
-        res.send('success')
+        console.log('signup success')
+        res.redirect('/login')
       }
     })
     .catch((err) => {
